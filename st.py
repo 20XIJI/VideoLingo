@@ -2,6 +2,7 @@ import streamlit as st
 import os, sys
 from st_components.imports_and_utils import *
 from core.config_utils import load_key
+from core import Optimize
 
 # SET PATH
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -45,15 +46,16 @@ def process_text():
         step2_whisper.transcribe()
     with st.spinner("Splitting long sentences..."):  
         step3_1_spacy_split.split_by_spacy()
-        step3_2_splitbymeaning.split_sentences_by_meaning()
+        # step3_2_splitbymeaning.split_sentences_by_meaning()
     with st.spinner("Summarizing and translating..."):
         step4_1_summarize.get_summary()
         if load_key("pause_before_translate"):
             input("⚠️ PAUSE_BEFORE_TRANSLATE. Go to `output/log/terminology.json` to edit terminology. Then press ENTER to continue...")
         step4_2_translate_all.translate_all()
     with st.spinner("Processing and aligning subtitles..."): 
-        step5_splitforsub.split_for_sub_main()
+        # step5_splitforsub.split_for_sub_main()
         step6_generate_final_timeline.align_timestamp_main()
+        Optimize.optimize()
     with st.spinner("Merging subtitles to video..."):
         step7_merge_sub_to_vid.merge_subtitles_to_video()
     

@@ -9,15 +9,15 @@ from spacy_utils.split_long_by_root import split_long_by_root_main
 from spacy_utils.load_nlp_model import init_nlp
 
 def split_by_spacy():
-    if os.path.exists('output/log/sentence_splitbynlp.txt'):
-        print("File 'sentence_splitbynlp.txt' already exists. Skipping split_by_spacy.")
+    if os.path.exists('output/log/sentences_by_mark.txt'):
+        print("File 'sentences_by_mark.txt' already exists. Skipping split_by_spacy.")
         return
     
     nlp = init_nlp()
     split_by_mark(nlp)
-    split_by_comma_main(nlp)
-    split_sentences_main(nlp)
-    split_long_by_root_main(nlp)
+    # split_by_comma_main(nlp)
+    # split_sentences_main(nlp)
+    # split_long_by_root_main(nlp)
     return
 
 if __name__ == '__main__':

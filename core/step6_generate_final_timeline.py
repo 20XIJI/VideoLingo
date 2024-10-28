@@ -119,7 +119,7 @@ def align_timestamp(df_text, df_translate, subtitle_output_configs: list, output
 def align_timestamp_main():
     df_text = pd.read_excel('output/log/cleaned_chunks.xlsx')
     df_text['text'] = df_text['text'].str.strip('"').str.strip()
-    df_translate = pd.read_excel('output/log/translation_results_for_subtitles.xlsx')
+    df_translate = pd.read_excel('output/log/translation_results.xlsx')
     df_translate['Translation'] = df_translate['Translation'].apply(lambda x: str(x).strip('。').strip('，') if pd.notna(x) else '')
     subtitle_output_configs = [ 
         ('src_subtitles.srt', ['Source']),
